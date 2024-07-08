@@ -1,27 +1,21 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_fooddelivery/components/my_button.dart';
 import 'package:flutter_fooddelivery/components/my_textfield.dart';
-import 'package:flutter_fooddelivery/pages/home_page.dart';
 
-//In summary, StatefulWidget allows Flutter widgets to have mutable state, managed by an associated State class. In your example, LoginPage is a stateful widget managing text input fields and buttons for a login screen, with _LoginPageState handling the logic and state changes. This structure helps Flutter manage UI updates efficiently in response to user interactions.
-class LoginPage extends StatefulWidget {
+class RegisterPage extends StatefulWidget {
   final void Function()? onTap;
 
-  const LoginPage({super.key, required this.onTap});
+  const RegisterPage({super.key, this.onTap});
 
   @override
-  State<LoginPage> createState() => _LoginPageState();
+  State<RegisterPage> createState() => _RegisterPageState();
 }
 
-class _LoginPageState extends State<LoginPage> {
+class _RegisterPageState extends State<RegisterPage> {
   final TextEditingController emailController = TextEditingController();
-
   final TextEditingController passwordController = TextEditingController();
-
-  void login() {
-    Navigator.push(
-        context, MaterialPageRoute(builder: (context) => const HomePage()));
-  }
+  final TextEditingController confirmPasswordController =
+      TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -41,7 +35,7 @@ class _LoginPageState extends State<LoginPage> {
               height: 25,
             ),
             Text(
-              "Food Delivery App",
+              "Let's create an account for you",
               style: TextStyle(
                   fontSize: 16,
                   color: Theme.of(context).colorScheme.inversePrimary),
@@ -61,7 +55,14 @@ class _LoginPageState extends State<LoginPage> {
             const SizedBox(
               height: 10,
             ),
-            MyButton(text: "Sign In", onTap: () => login()),
+            MyTextfield(
+                controller: confirmPasswordController,
+                hintText: "Confirm Password",
+                obscureText: true),
+            const SizedBox(
+              height: 10,
+            ),
+            MyButton(text: "Sign Up", onTap: () {}),
             const SizedBox(
               height: 25,
             ),
@@ -69,7 +70,7 @@ class _LoginPageState extends State<LoginPage> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Text(
-                  "Not a member?",
+                  "Already have an account?",
                   style: TextStyle(
                       color: Theme.of(context).colorScheme.inversePrimary),
                 ),
@@ -79,7 +80,7 @@ class _LoginPageState extends State<LoginPage> {
                 GestureDetector(
                   onTap: widget.onTap,
                   child: Text(
-                    "Register now",
+                    "Login now",
                     style: TextStyle(
                         color: Theme.of(context).colorScheme.inversePrimary,
                         fontWeight: FontWeight.bold),

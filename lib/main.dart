@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_fooddelivery/auth/login_or_register.dart';
+import 'package:flutter_fooddelivery/pages/register_page.dart';
 import 'package:flutter_fooddelivery/themes/theme_provider.dart';
 import 'package:provider/provider.dart';
 import 'pages/login_page.dart';
@@ -18,9 +20,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: LoginPage(
-        onTap: () {},
-      ),
+      home: LoginOrRegister(),
       theme: Provider.of<ThemeProvider>(context).themeData,
     );
   }
